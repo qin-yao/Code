@@ -4,10 +4,10 @@ import java.text.DateFormat;
 public class TelcomUser {
 	private String phoneNumber;
 	private String calllTo;
-	private ArrayList communicationRecords;
+	private LinkedList communicationRecords;
 	public TelcomUser(String phoneNumber){
 		this.phoneNumber=phoneNumber;
-		this.communicationRecords=new ArrayList();
+		this.communicationRecords=new LinkedList();
 		
 	}
 	void generateCommunicateRecord(){
@@ -41,11 +41,10 @@ public class TelcomUser {
 		
 	}
 	void printDetails(){
-		int arrayListSize =this.communicationRecords.size();
-		for(int i=0;i<=arrayListSize - 1;i++){
-			String [] recordField = ((String) this.communicationRecords.get(i)).split(",");
-			//DateFormat mediumFormat=DateFormat.getDateTimeInstance(DateFormat.MEDIUM,DateFormat.MEDIUM);
+		/*使用foreach循环*/
+		for(Object aRecord:this.communicationRecords ){
 			System.out.println("--------通话记录分割线--------");
+			String [] recordField = ((String)aRecord).split(",");
 			System.out.println("主叫："+recordField[0]);
 			System.out.println("被叫："+recordField[3]);
 			Date timeStart=new Date(Long.parseLong(recordField[1]));
